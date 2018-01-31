@@ -1,0 +1,1 @@
+This repository is the senior capstone for RJ Lock. The goal of this project is to create a script to pull data from existing databases, combine them into one database, and plot that data on a dashboard.
