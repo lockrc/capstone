@@ -11,7 +11,7 @@ import time
 
 # Connect to the Database #
 try:
-    cnx = mysql.connector.connect(user='root', password='reidb',
+    reidb = mysql.connector.connect(user='root', password='reidb',
         host='localhost',
         database='test')
 except mysql.connector.Error as err:
@@ -23,14 +23,17 @@ except mysql.connector.Error as err:
     print(err)
 
 # Create database Cursor #
-cursor = cnx.cursor()
+cursor = reidb.cursor()
 
 # Import csv File #
 csv_data = csv.reader(file('RJCampus.csv'))
 for row in csv_data:
-    cursor.execute("INSERT INTO rei VALUES (%s, %d)",row)
+    cursor.execute("INSERT INTO rei "
+    "(datadatetime, powerusage) "
+    "VALUES (%s,%s)", row)
+    reidb.commit()
+#cursor.execute("INSERT INTO rei VALUES ('2018-5-6','5000')")
 
 print "Success!"
 time.sleep(10)
-
-cnx.close()
+reidb.close()
