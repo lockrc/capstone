@@ -13,9 +13,9 @@ start = time.clock()
 # Connect to the Database #
 try:
     reidb = mysql.connector.connect(user='root',
-        password='reidb',
-        host='localhost',
-        database='rei')
+                                    password='reidb',
+                                    host='localhost',
+                                    database='rei')
 except mysql.connector.Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your user name or password")
@@ -34,17 +34,19 @@ for row in csv_data:
         row.remove("")
         row.append(0)
         cursor.execute("INSERT INTO campususage "
-        "(datadatetime, powerusage) "
-        "VALUES (%s,%s)", row)
+                       "(datadatetime, powerusage) "
+                       "VALUES (%s,%s)", row)
     else:
         cursor.execute("INSERT INTO campususage "
-        "(datadatetime, powerusage) "
-        "VALUES (%s,%s)", row)
+                       "(datadatetime, powerusage) "
+                       "VALUES (%s,%s)", row)
     reidb.commit()
 end = time.clock()
 
 print "Time Elapsed: "
 print end-start
+
 print "\nSuccess!"
+
 time.sleep(10)
 reidb.close()
