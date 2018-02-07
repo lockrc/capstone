@@ -9,11 +9,11 @@ import mysql.connector
 from mysql.connector import errorcode
 import time
 
+# Connect to the Database #
 try:
     cnx = mysql.connector.connect(user='root', password='reidb',
         host='localhost',
         database='test')
-
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
@@ -21,6 +21,14 @@ except mysql.connector.Error as err:
     print("Database does not exist")
   else:
     print(err)
+
+# Create database Cursor #
+cursor = cnx.cursor()
+
+# Import csv File #
+csv_data = csv.reader(file('RJCampus.csv'))
+for row in csv_data:
+    cursor.execute("INSERT INTO rei VALUES (%s, %d)",row)
 
 print "Success!"
 time.sleep(10)
