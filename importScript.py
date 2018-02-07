@@ -6,3 +6,8 @@
 
 import csv
 import mysql.connector
+
+cnx = mysql.connector.connect(user='root', password='reidb',
+    host='localhost',
+    database='rei')
+cnx.close()
