@@ -9,6 +9,7 @@ import mysql.connector
 from mysql.connector import errorcode
 import time
 
+start = time.clock()
 # Connect to the Database #
 try:
     reidb = mysql.connector.connect(user='root', password='reidb',
@@ -31,16 +32,20 @@ for row in csv_data:
     if row[1] == "":
         row.remove("")
         row.append(0)
-        cursor.execute("INSERT INTO rei "
+        cursor.execute("INSERT INTO campususage "
         "(datadatetime, powerusage) "
         "VALUES (%s,%s)", row)
     else:
-        cursor.execute("INSERT INTO rei "
+        cursor.execute("INSERT INTO campususage "
         "(datadatetime, powerusage) "
         "VALUES (%s,%s)", row)
     reidb.commit()
 #cursor.execute("INSERT INTO rei VALUES ('2018-5-6','5000')")
 
-print "Success!"
+end = time.clock()
+
+print "Time Elapsed: "
+print end-start
+print "\nSuccess!"
 time.sleep(10)
 reidb.close()
