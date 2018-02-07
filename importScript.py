@@ -12,7 +12,8 @@ import time
 start = time.clock()
 # Connect to the Database #
 try:
-    reidb = mysql.connector.connect(user='root', password='reidb',
+    reidb = mysql.connector.connect(user='root',
+        password='reidb',
         host='localhost',
         database='test')
 except mysql.connector.Error as err:
@@ -40,8 +41,6 @@ for row in csv_data:
         "(datadatetime, powerusage) "
         "VALUES (%s,%s)", row)
     reidb.commit()
-#cursor.execute("INSERT INTO rei VALUES ('2018-5-6','5000')")
-
 end = time.clock()
 
 print "Time Elapsed: "
