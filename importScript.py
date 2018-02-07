@@ -28,9 +28,16 @@ cursor = reidb.cursor()
 # Import csv File #
 csv_data = csv.reader(file('RJCampus.csv'))
 for row in csv_data:
-    cursor.execute("INSERT INTO rei "
-    "(datadatetime, powerusage) "
-    "VALUES (%s,%s)", row)
+    if row[1] == "":
+        row.remove("")
+        row.append(0)
+        cursor.execute("INSERT INTO rei "
+        "(datadatetime, powerusage) "
+        "VALUES (%s,%s)", row)
+    else:
+        cursor.execute("INSERT INTO rei "
+        "(datadatetime, powerusage) "
+        "VALUES (%s,%s)", row)
     reidb.commit()
 #cursor.execute("INSERT INTO rei VALUES ('2018-5-6','5000')")
 
