@@ -4,13 +4,11 @@
 # Copyright (c) 2018 Richard Lock (lockrc@appstate.edu)
 # GNU GPLv3 <https://www.gnu.org/licenses/gpl-3.0.en.html>
 
-import csv
 import mysql.connector
 from mysql.connector import errorcode
 import time
+import random
 
-start = time.clock()
-# Connect to the Database #
 try:
     reidb = mysql.connector.connect(user='root',
                                     password='reidb',
@@ -27,26 +25,12 @@ except mysql.connector.Error as err:
 # Create database Cursor #
 cursor = reidb.cursor()
 
-# Import csv File #
-csv_data = csv.reader(file('RJLibCir2.csv'))
-for row in csv_data:
-    if row[1] == "":
-        row.remove("")
-        row.append(0)
-        cursor.execute("INSERT INTO libcirc "
-                       "(datadatetime, powerproduction) "
-                       "VALUES (%s,%s)", row)
-    else:
-        cursor.execute("INSERT INTO libcirc "
-                       "(datadatetime, powerproduction) "
-                       "VALUES (%s,%s)", row)
+while(1):
+    time.sleep(1)
+    print "TICK"
+    num = random.random()
+    cursor.execute("TRUNCATE live")
+    cursor.execute("INSERT INTO live VALUES(NOW(), " + str(num) + ")")
     reidb.commit()
-end = time.clock()
 
-print "Time Elapsed: "
-print end-start
-
-print "\nSuccess!"
-
-time.sleep(10)
 reidb.close()
