@@ -28,16 +28,16 @@ except mysql.connector.Error as err:
 cursor = reidb.cursor()
 
 # Import csv File #
-csv_data = csv.reader(file('SinceNov1 2.csv'))
+csv_data = csv.reader(file('SinceNov1 3.csv'))
 for row in csv_data:
     if row[1] == "":
         row.remove("")
         row.append(0)
-        cursor.execute("INSERT INTO mountarray "
+        cursor.execute("INSERT INTO legends "
                        "(datadatetime, powerproduction) "
                        "VALUES (%s,%s)", row)
     else:
-        cursor.execute("INSERT INTO mountarray "
+        cursor.execute("INSERT INTO legends "
                        "(datadatetime, powerproduction) "
                        "VALUES (%s,%s)", row)
     reidb.commit()
@@ -48,5 +48,5 @@ print end-start
 
 print "\nSuccess!"
 
-time.sleep(10)
+time.sleep(5)
 reidb.close()
