@@ -28,7 +28,7 @@ except mysql.connector.Error as err:
 cursor = reidb.cursor()
 
 # Import csv File #
-csv_data = csv.reader(file('RJLibCir2.csv'))
+csv_data = csv.reader(file('Test 2.csv'))
 for row in csv_data:
     if row[1] == "":
         row.remove("")
