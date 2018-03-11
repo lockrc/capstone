@@ -44,7 +44,7 @@ for row in csv_data:
 end = time.clock()
 
 print "Time Elapsed: "
-print end-start
+print end - start
 
 print "\nSuccess!"
 

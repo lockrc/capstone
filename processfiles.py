@@ -44,10 +44,10 @@ def processphotovoltaic(filename, location, cursor):
         if rownum == 0:
             rownum = rownum + 1
             continue
-        cursor.execute("SELECT * FROM %s WHERE datadatetime = %s", location, row[0])
-        row_count = cursor.rowcount
-        print row_count
-        if row_count == 0:
-            print row[0]
-        # cursor.execute("INSERT INTO %s (datadatetime, powerproduction) "
-        #               "VALUES (%s,%s)", location, row[0], row[21])
+        rows = cursor.execute("SELECT * FROM libcirc WHERE datadatetime = \"" + row[0] + "\"")
+        cursor.fetchall()
+        if cursor.rowcount == 0:
+            print "Datetime: " + row[0] + "   Voltage: " + row[21]
+            time.sleep(1)
+            # cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
+            #               "VALUES (" + row[0] + "," + row[21] + ")")
