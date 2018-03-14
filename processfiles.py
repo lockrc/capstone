@@ -48,17 +48,19 @@ def processphotovoltaic(filename, location, cursor):
             continue
         rows = cursor.execute("SELECT * FROM " + location + " WHERE datadatetime = \"" + row[0] + "\"")
         cursor.fetchall()
-        format = "%Y-%m-%d %H:%M:%S %Z"
+        format = "%Y-%m-%d %H:%M:%S"
+        est = pytz.timezone('US/Eastern')
+        utc = pytz.utc
         if cursor.rowcount == 0:
-            utc = pytz.utc
-            date = datetime.strptime(row[0] + " UTC", format)
+            date = datetime.strptime(row[0], format)
             dt = utc.localize(date)
-            dtstr = dt.strftime(format)
-            print "Datetime: " + dtstr + "   Voltage: " + row[21]
-            est = pytz.timezone('US/Eastern')
             dt = dt.astimezone(est)
             dtstr = dt.strftime(format)
-            print "Datetime: " + dtstr + "   Voltage: " + row[21]
-            time.sleep(1)
-            # cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
-            #               "VALUES (" + row[0] + "," + row[21] + ")")
+            if row[21] == "":
+                cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
+                               "VALUES (\"" + dtstr + "\"," + "0" + ")")
+                # print "Datetime: " + dtstr + "    Voltage: " + "0"
+            else:
+                cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
+                               "VALUES (\"" + dtstr + "\"," + str(float(row[21]) / 1000) + ")")
+                # print "Datetime: " + dtstr + "    Voltage: " + str(float(row[21]) / 1000)
