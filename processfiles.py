@@ -46,16 +46,16 @@ def processphotovoltaic(filename, location, cursor):
         if rownum == 0:
             rownum = rownum + 1
             continue
-        rows = cursor.execute("SELECT * FROM " + location + " WHERE datadatetime = \"" + row[0] + "\"")
-        cursor.fetchall()
         format = "%Y-%m-%d %H:%M:%S"
         est = pytz.timezone('US/Eastern')
         utc = pytz.utc
+        date = datetime.strptime(row[0], format)
+        dt = utc.localize(date)
+        dt = dt.astimezone(est)
+        dtstr = dt.strftime(format)
+        rows = cursor.execute("SELECT * FROM " + location + " WHERE datadatetime = \"" + dtstr + "\"")
+        cursor.fetchall()
         if cursor.rowcount == 0:
-            date = datetime.strptime(row[0], format)
-            dt = utc.localize(date)
-            dt = dt.astimezone(est)
-            dtstr = dt.strftime(format)
             if row[21] == "":
                 cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
                                "VALUES (\"" + dtstr + "\"," + "0" + ")")
