@@ -32,6 +32,7 @@ def process():
     # Create database Cursor #
     cursor = reidb.cursor()
 
+    # Process each file in the directory
     for file in os.listdir('.'):
         if fnmatch.fnmatch(file, 'mb-051*.csv'):
             processphotovoltaic(file, "libcirc", cursor)
@@ -58,9 +59,7 @@ def processphotovoltaic(filename, location, cursor):
         if cursor.rowcount == 0:
             if row[21] == "":
                 cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
-                               "VALUES (\"" + dtstr + "\"," + "0" + ")")
-                # print "Datetime: " + dtstr + "    Voltage: " + "0"
+                               "VALUES (\"" + dtstr + "\"," + "-1" + ")")
             else:
                 cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
                                "VALUES (\"" + dtstr + "\"," + str(float(row[21]) / 1000) + ")")
-                # print "Datetime: " + dtstr + "    Voltage: " + str(float(row[21]) / 1000)
