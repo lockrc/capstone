@@ -57,9 +57,6 @@ def processphotovoltaic(filename, location, cursor):
         rows = cursor.execute("SELECT * FROM " + location + " WHERE datadatetime = \"" + dtstr + "\"")
         cursor.fetchall()
         if cursor.rowcount == 0:
-            if row[21] == "":
-                cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
-                               "VALUES (\"" + dtstr + "\"," + "-1" + ")")
-            else:
+            if not (row[21] == ""):
                 cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
                                "VALUES (\"" + dtstr + "\"," + str(float(row[21]) / 1000) + ")")
