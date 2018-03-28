@@ -40,6 +40,18 @@ def process():
         if fnmatch.fnmatch(file, 'mb-004*.csv'):
             processwind(file, cursor)
             reidb.commit()
+        if fnmatch.fnmatch(file, 'mb-017*.csv'):
+            processST(file, "plemmons", cursor)
+            reidb.commit()
+        if fnmatch.fnmatch(file, 'mb-018*.csv'):
+            processST(file, "varsitygym", cursor)
+            reidb.commit()
+        if fnmatch.fnmatch(file, 'mb-019*.csv'):
+            processST(file, "summit", cursor)
+            reidb.commit()
+        if fnmatch.fnmatch(file, 'mb-021*.csv'):
+            processST(file, "mountaineer", cursor)
+            reidb.commit()
 
 
 def processlibcirc(filename, cursor):
@@ -86,3 +98,26 @@ def processwind(filename, cursor):
             if not (row[5] == ""):
                 cursor.execute("INSERT INTO wind (datadatetime, powerproduction) "
                                "VALUES (\"" + dtstr + "\"," + row[5] + ")")
+
+
+def processST(filename, table, cursor):
+    # Import csv File #
+    csv_data = csv.reader(file(filename))
+    rownum = 0
+    for row in csv_data:
+        if rownum == 0:
+            rownum = rownum + 1
+            continue
+        format = "%Y-%m-%d %H:%M:%S"
+        est = pytz.timezone('US/Eastern')
+        utc = pytz.utc
+        date = datetime.strptime(row[0], format)
+        dt = utc.localize(date)
+        dt = dt.astimezone(est)
+        dtstr = dt.strftime(format)
+        rows = cursor.execute("SELECT * FROM " + table + " WHERE datadatetime = \"" + dtstr + "\"")
+        cursor.fetchall()
+        if cursor.rowcount == 0:
+            if not (row[4] == ""):
+                cursor.execute("INSERT INTO " + table + " (datadatetime, powerproduction) "
+                               "VALUES (\"" + dtstr + "\"," + row[4] + ")")
