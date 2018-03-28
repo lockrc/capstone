@@ -35,11 +35,14 @@ def process():
     # Process each file in the directory
     for file in os.listdir('.'):
         if fnmatch.fnmatch(file, 'mb-051*.csv'):
-            processphotovoltaic(file, "libcirc", cursor)
+            processlibcirc(file, cursor)
+            reidb.commit()
+        if fnmatch.fnmatch(file, 'mb-004*.csv'):
+            processwind(file, cursor)
             reidb.commit()
 
 
-def processphotovoltaic(filename, location, cursor):
+def processlibcirc(filename, cursor):
     # Import csv File #
     csv_data = csv.reader(file(filename))
     rownum = 0
@@ -54,9 +57,32 @@ def processphotovoltaic(filename, location, cursor):
         dt = utc.localize(date)
         dt = dt.astimezone(est)
         dtstr = dt.strftime(format)
-        rows = cursor.execute("SELECT * FROM " + location + " WHERE datadatetime = \"" + dtstr + "\"")
+        rows = cursor.execute("SELECT * FROM libcirc WHERE datadatetime = \"" + dtstr + "\"")
         cursor.fetchall()
         if cursor.rowcount == 0:
             if not (row[21] == ""):
-                cursor.execute("INSERT INTO " + location + " (datadatetime, powerproduction) "
+                cursor.execute("INSERT INTO libcirc (datadatetime, powerproduction) "
                                "VALUES (\"" + dtstr + "\"," + str(float(row[21]) / 1000) + ")")
+
+
+def processwind(filename, cursor):
+    # Import csv File #
+    csv_data = csv.reader(file(filename))
+    rownum = 0
+    for row in csv_data:
+        if rownum == 0:
+            rownum = rownum + 1
+            continue
+        format = "%Y-%m-%d %H:%M:%S"
+        est = pytz.timezone('US/Eastern')
+        utc = pytz.utc
+        date = datetime.strptime(row[0], format)
+        dt = utc.localize(date)
+        dt = dt.astimezone(est)
+        dtstr = dt.strftime(format)
+        rows = cursor.execute("SELECT * FROM wind WHERE datadatetime = \"" + dtstr + "\"")
+        cursor.fetchall()
+        if cursor.rowcount == 0:
+            if not (row[5] == ""):
+                cursor.execute("INSERT INTO wind (datadatetime, powerproduction) "
+                               "VALUES (\"" + dtstr + "\"," + row[5] + ")")
