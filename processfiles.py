@@ -12,9 +12,6 @@ import mysql.connector
 from datetime import datetime
 import pytz
 from mysql.connector import errorcode
-import requests
-import json
-import untangle
 
 
 def process():
@@ -55,9 +52,6 @@ def process():
         if fnmatch.fnmatch(file, 'mb-021*.csv'):
             processST(file, "mountaineer", cursor)
             reidb.commit()
-    processEnphase(cursor)
-    processXML(cursor)
-    reidb.commit()
 
 
 def processlibcirc(filename, cursor):
@@ -127,15 +121,3 @@ def processST(filename, table, cursor):
             if not (row[4] == ""):
                 cursor.execute("INSERT INTO " + table + " (datadatetime, powerproduction) "
                                "VALUES (\"" + dtstr + "\"," + row[4] + ")")
-
-
-def processEnphase(cursor):
-    r = requests.get('https://api.enphaseenergy.com/api/v2/systems/664018/summary?key=67551e09a7f4aa3609816466b9c4a757&user_id=4e6a4d344d7a45790a')
-    parsed_json = json.loads(r.text)
-    format = "%Y-%m-%d %H:%M:%S"
-    dtstr = time.strftime(format, time.localtime(parsed_json[u'last_interval_end_at']))
-    rows = cursor.execute("SELECT * FROM legends WHERE datadatetime = \"" + dtstr + "\"")
-    cursor.fetchall()
-    if cursor.rowcount == 0:
-        cursor.execute("INSERT INTO legends (datadatetime, powerproduction) "
-                       "VALUES (\"" + dtstr + "\"," + str(float(parsed_json[u'current_power']) / 1000) + ")")
