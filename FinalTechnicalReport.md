@@ -13,13 +13,13 @@ Brief 200-300 word description of project objectives, methods and results.
 ## Table of Contents and Lists of Figures and Tables
 TOC should list sections, titles up to second level headings with hyperlinks to subsequent sections
 * [Introduction and Project Overview](#introduction-and-project-overview)
-  * [Design Development and Test](#design-development-and-test)
-    + [Design](#design)
-    + [Development](#development)
-    + [Test](#test)
-  * [Results](#results)
-  * [Conclusions and Future Work](#conclusions-and-future-work)
-  * [References](#references)
+* [Design Development and Test](#design-development-and-test)
+  + [Design](#design)
+  + [Development](#development)
+  + [Test](#test)
+* [Results](#results)
+* [Conclusions and Future Work](#conclusions-and-future-work)
+* [References](#references)
 
 ## Introduction and Project Overview 
 (800-1200 words)
