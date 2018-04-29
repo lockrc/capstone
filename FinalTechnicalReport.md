@@ -12,8 +12,17 @@ Brief 200-300 word description of project objectives, methods and results.
 
 ## Table of Contents and Lists of Figures and Tables
 TOC should list sections, titles up to second level headings with hyperlinks to subsequent sections
+* [Introduction and Project Overview](#introduction-and-project-overview)
+  * [Design Development and Test](#design-development-and-test)
+    + [Design](#design)
+    + [Development](#development)
+    + [Test](#test)
+  * [Results](#results)
+  * [Conclusions and Future Work](#conclusions-and-future-work)
+  * [References](#references)
 
-## Introduction and Project Overview (~800-1200 words)
+## Introduction and Project Overview 
+(800-1200 words)
 This project was created to move the data from the Renewable Energy Initiative at Appalachian State University to a new dashboard. The Renewable Energy Initiative (REI) currently pays approximately $14,000 per year to a company to host a dashboard that graphs all of their renewable energy project data. They are not happy with their current soulution because their current solution does not allow them any ability to modify the dashboards in any way. Any changes that they want made to the dashboards they need to call and have the company make the changes and this can take up to a week. This solution does not meet their needs very well and costs them more than 10% of their annual operating budget to continue using the dashboard. This soultion is not optimal and so is being replaced by the dashboard hosted on campus and using the grafana graphing software.
 
 At this time REI has 7 projects with ongoing data requirements. There are also many projects that are in the process of being created. This soulution allows them to more easily add new systems and add them to their own dashboard rather than having to work through a company. This also allows them to direcly look at their data with transparency and understand how the data is being processed. With their current solution their is processing in the background and that does not allow for them to understand if their data is even completely correct because they do not know how the company is processing their data before it shows up on the dashboard.
@@ -33,7 +42,8 @@ Problem scope--problems addressed and not addressed
 Figures and system diagrams where possible to illustrate problems and solutions.
 Summary of features
 
-## Design, Development and Test (~800-1200 words)
+## Design Development and Test 
+(800-1200 words)
 This section describes your design and test approach. Subsections should include:
 
 ### Design 
@@ -47,13 +57,15 @@ Describe your test approach (what was tested, how tested, what was not tested). 
 
 As a guide to the level of detail, someone with your level of experience should be able to substantially reproduce your work from the descriptions in this section along with Introduction section.
 
-## Results (~800-1200 words)
+## Results 
+(800-1200 words)
 Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
 This section describes final system in terms of features completed and actual performance of the system under test.
 Include discussion of problems encountered, accuracy of estimates
 Use figures and diagrams whenever possible
 
-## Conclusions and Future Work (~400-800 words)
+## Conclusions and Future Work 
+(400-800 words)
 Briefly summarize problem, approach and results
 Describe your conclusions and "lessons learned" regarding the results
 Describe utility of results
@@ -62,7 +74,3 @@ Suggest areas for further study and/or development
 ## References
 Provide references in standard ACM format (numbers in text correspond to numbered references here).
 List all references to code used as part of your system (libraries, etc.)
-
-## Appendices (optional)
-Any additional tables and graphs that support the reading of your paper
-Code listings or examples that help the reader better understand your design (your code, not that of other authors)
