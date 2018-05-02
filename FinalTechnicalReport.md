@@ -42,7 +42,7 @@ This solution allows for REI to easily add new systems and to have authority ove
 
 There are many graphing solutions out there but grafana provides a perfect one because it is an out of the box soultion that handles the web portion so that REI can simply add new pages whenever they want without having to do any web programming.
 
-My soultion immediately handles the problems that REI has with their current soultion. It also provides a immediate benefit of cost savings.
+My solution immediately handles the problems that REI has with their current soultion. It also provides a immediate benefit of cost savings.
 
 ## Design Development and Test 
 (800-1200 words)
@@ -50,12 +50,12 @@ This section describes your design and test approach. Subsections should include
 
 ### Design 
 * Libraries and Python version
-   * Python 3.6
-   * pysftp
-   * mysql.connector
-   * pytz
-   * untangle
-   * requests
+   * Python 3.6 [1]
+   * pysftp [2]
+   * mysql.connector [3]
+   * pytz [4]
+   * untangle [5]
+   * requests [6]
    
 Describe system components (e.g. software modules/components, libraries, etc.), interfaces, and operations. Use figures to illustrate your description, for example: photos, block diagrams, class diagrams, state diagrams, flow charts, tables, etc.
 
@@ -100,3 +100,10 @@ This project is mostly complete there are still a few pieces left to complete. T
 ## References
 Provide references in standard ACM format (numbers in text correspond to numbered references here).
 List all references to code used as part of your system (libraries, etc.)
+
+[1] https://www.python.org/
+[2] https://pysftp.readthedocs.io/en/release_0.2.9/
+[3] https://dev.mysql.com/downloads/connector/python/
+[4] http://pytz.sourceforge.net/
+[5] https://github.com/stchris/untangle
+[6] http://docs.python-requests.org/en/master/
