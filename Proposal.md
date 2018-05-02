@@ -3,20 +3,20 @@ Name: REI Dashboard <br>
 Developer: RJ Lock
 
 ## Project Overview
-Description: 
+### Description: 
 REI pays $14,000 per year to a company called Lucid to produce a dashboard for them and they are still unhappy with the result. They want it to be customizable and the one that they are paying for is not customizable at all without calling the company and asking for them to change it.
-Outline:
+### Outline:
 
-## Must Have:
+#### Must Have:
 *	Pull data from the two databases that REI uses to store their data
 *	Store data in a common database that can then be accessed by the dashboard tool that is being used
 *	Create a dashboard that meets the needs of the REI officials
 
-## Want to have:
+#### Want to have:
 *	Use current framework that was created to pull the data out of the databases
 *	Take data and use multiple plotting services to give different options to REI for ways to display their data
 
-## Users
+### Users
 The users would be the REI officials but would obviously have possible commercial application since they currently pay another company to handle the data combination and graphing. This could be applied to many other people who need data graphed. There is obviously a need since the current company is being paid $14000 dollars and are not meeting the relatively simple needs of the REI officials
 
 ## Similar Existing Work
