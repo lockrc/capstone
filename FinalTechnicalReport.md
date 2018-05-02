@@ -5,7 +5,7 @@
 ## Abstract
 Brief 200-300 word description of project objectives, methods and results.
 
-
+This project is designed to replace Appalachian State University's Renewable Energy Initiative (REI) dashboard that they use to display the generation by the renewables on campus. They currently pay $14,000 per year to a company and are still unhappy with the service they recieve. They pay more than 10% of their budget on this dashboard and they are disatisfied with the product. I created a new version with python scripts, a MYSQL database, and a grafana server. My solution gives much of the functionality that they want from their dashboard. It gives more features that they wanted from their current dashboard and allows them to host it on Appalachian's campus for much much cheaper than $14,000 per year.
 
 ## Keywords
 Python, Renewable Energy, Solar Thermal, grafana, Photovoltaic, csv, JSON, XML
@@ -85,7 +85,7 @@ Use figures and diagrams whenever possible
 
 The objectives were very close to being met. The only thing that was not completed was the ability to pull live data.
 
-## Conclusions and Future Work 
+## Conclusions and Future Work
 (400-800 words)
 
 Briefly summarize problem, approach and results
