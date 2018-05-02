@@ -1,7 +1,6 @@
 # Final Technical Report
 
-#### REI Dashboard Project
-#### RJ Lock
+#### REI Dashboard Project by: RJ Lock
 #### May 6, 2018
 ## Abstract
 Brief 200-300 word description of project objectives, methods and results.
@@ -12,7 +11,6 @@ Brief 200-300 word description of project objectives, methods and results.
 Python, Renewable Energy, Solar Thermal, grafana, Photovoltaic, csv
 
 ## Table of Contents and Lists of Figures and Tables
-TOC should list sections, titles up to second level headings with hyperlinks to subsequent sections
 * [Introduction and Project Overview](#introduction-and-project-overview)
 * [Design Development and Test](#design-development-and-test)
   + [Design](#design)
@@ -77,7 +75,7 @@ As a guide to the level of detail, someone with your level of experience should 
 
 Testing was done manually for my project. Each new system that got added had to be compared to the existing dashboard as well as the csv files to make sure that they matched. The comparison to the old dashboard was not an exact comparison because the timeframes were different (1 hour increments for old dashboard, 15 minute for new). The csv files matched exactly what was in the database.
 
-## Results 
+## Results
 (800-1200 words)
 
 Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
