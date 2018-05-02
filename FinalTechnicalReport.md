@@ -8,7 +8,7 @@ Brief 200-300 word description of project objectives, methods and results.
 
 
 ## Keywords
-Python, Renewable Energy, Solar Thermal, grafana, Photovoltaic, csv
+Python, Renewable Energy, Solar Thermal, grafana, Photovoltaic, csv, JSON, XML
 
 ## Table of Contents and Lists of Figures and Tables
 * [Introduction and Project Overview](#introduction-and-project-overview)
@@ -32,15 +32,15 @@ Problem scope--problems addressed and not addressed
 Figures and system diagrams where possible to illustrate problems and solutions.
 Summary of features
 
-This project was created to move the data from the Renewable Energy Initiative at Appalachian State University to a new dashboard. The Renewable Energy Initiative (REI) currently pays approximately $14,000 per year to a company to host a dashboard that graphs all of their renewable energy project data. They are not happy with their current soulution because their current solution does not allow them any ability to modify the dashboards in any way. Any changes that they want made to the dashboards they need to call and have the company make the changes and this can take up to a week. This solution does not meet their needs very well and costs them more than 10% of their annual operating budget to continue using the dashboard. This soultion is not optimal and so is being replaced by the dashboard hosted on campus and using the grafana graphing software.
+This project was created to move the data from the Renewable Energy Initiative at Appalachian State University to a new dashboard. The Renewable Energy Initiative (REI) currently pays approximately $14,000 per year to a company to host a dashboard that graphs all of their renewable energy project data. They are not happy with their current solution because their current solution does not allow them any ability to modify the dashboards in any way. Any changes that they want made to the dashboards they need to call and have the company make the changes and this can take up to a week. This solution does not meet their needs very well and costs them more than 10% of their annual operating budget to continue using the dashboard. This solution is not optimal and so is being replaced by the dashboard hosted on campus and using the grafana graphing software.
 
-At this time REI has 7 projects with ongoing data requirements. There are also many projects that are in the process of being created. This soulution allows them to more easily add new systems and add them to their own dashboard rather than having to work through a company. This also allows them to direcly look at their data with transparency and understand how the data is being processed. With their current solution their is processing in the background and that does not allow for them to understand if their data is even completely correct because they do not know how the company is processing their data before it shows up on the dashboard.
+At this time REI has 7 projects with ongoing data requirements. There are also many projects that are in the process of being created. This solution allows them to more easily add new systems and add them to their own dashboard rather than having to work through a company. This also allows them to direcly look at their data with transparency and understand how the data is being processed. With their current solution their is processing in the background and that does not allow for them to understand if their data is even completely correct because they do not know how the company is processing their data before it shows up on the dashboard.
 
 This solution allows for REI to easily add new systems and to have authority over how their data is processed. This also allows them complete autonomy in the ability to edit and update their dashboards as they please. They also wished for more granularity in their data because their current solution only allows for 1 hour increments and does not automatically update all of the graphs.
 
-There are many graphing solutions out there but grafana provides a perfect one because it is an out of the box soultion that handles the web portion so that REI can simply add new pages whenever they want without having to do any web programming.
+There are many graphing solutions out there but grafana provides a perfect one because it is an out of the box solution that handles the web portion so that REI can simply add new pages whenever they want without having to do any web programming.
 
-My solution immediately handles the problems that REI has with their current soultion. It also provides a immediate benefit of cost savings.
+My solution immediately handles the problems that REI has with their current solution. It also provides a immediate benefit of cost savings.
 
 ## Design Development and Test 
 (800-1200 words)
@@ -62,11 +62,11 @@ Before each step in the process I created little test files to learn how each li
 
 Describe how system was developed (for example, order of subsystem development and how risks were addressed early)
 
-Development started with everything being located on my machine. I began by getting the grafana server and MYSQL server running on my machine. After that I moved on to get static files from the current dashboard and wrote a file to upload them. That file is importScript.py. After that I moved on to pulling files from a file server located on campus and pulled all of the csv files. I began by processing these files for just one system Library Circle. Once I had that working I moved on to the other systems first the Broyhill windturbine. After I got the windturbine operating correctly I moved to process the Solar Thermal systems. I started with Summit and once it was functional I used that code to process all of the Solar Thermal Systems.
+Development started with everything being located on my machine. I began by getting the grafana server and MYSQL server running on my machine. After that I moved on to get static files from the current dashboard and wrote a file to upload them. That file is importScript.py. After that, I moved on to pulling files from a file server located on campus and pulled all of the csv files. I began by processing these files for just one system Library Circle. Once I had that working I moved on to the other systems first the Broyhill windturbine. After I got the windturbine operating correctly, I moved to process the Solar Thermal systems. I started with Summit and once it was functional I used that code to process all of the Solar Thermal Systems.
 
-I next moved to process the legends photovoltaic system. This system is managed by a company called enphase. All of the data is sent to enphases servers and has to be retrieved through their API. The API used web calls to return the information in JSON format. I used requests to pull the data and the python json library to process the json before inserting it into the database.
+I next moved to process the legends photovoltaic system. This system is managed by a company called enphase. All of the data is sent to enphases servers and has to be retrieved through their API. The API used web calls to return the information in JSON format. I used requests to pull the data and the python JSON library to process the JSON before inserting it into the database.
 
-The mountain array at raley traffic circle is the system with the most complications. It is a site hosted on appalachians network that is a live representaiton of the data. It has 4 catagories for which it holds the data minute, hour, day, month. The problem comes that we want data for 15 minute intervals. This means the minutes have to be added up and posted. This process took longer than expected to get correct. It eventually ended up being a sepereate file that wakes up every minute to accumulate the data and post it when it is a 15 minute interval.
+The mountain array at raley traffic circle is the system with the most complications. It is a site hosted on Appalachian State's network that is a live representation of the data. It has 4 catagories for which it holds the data: minute, hour, day, month. The problem comes that we want data for 15 minute intervals. This means the minutes have to be added up and posted. This process took longer than expected to get correct. It eventually ended up being a sepereate file that wakes up every minute to accumulate the data and post it when it is a 15 minute interval.
 
 ### Test
 Describe your test approach (what was tested, how tested, what was not tested). You should organize this by feature (as you did for the System Features assignment).
