@@ -101,9 +101,9 @@ This project is mostly complete there are still a few pieces left to complete. T
 Provide references in standard ACM format (numbers in text correspond to numbered references here).
 List all references to code used as part of your system (libraries, etc.)
 
-[1] https://www.python.org/
-[2] https://pysftp.readthedocs.io/en/release_0.2.9/
-[3] https://dev.mysql.com/downloads/connector/python/
-[4] http://pytz.sourceforge.net/
-[5] https://github.com/stchris/untangle
+[1] https://www.python.org/ <br>
+[2] https://pysftp.readthedocs.io/en/release_0.2.9/ <br>
+[3] https://dev.mysql.com/downloads/connector/python/ <br>
+[4] http://pytz.sourceforge.net/ <br>
+[5] https://github.com/stchris/untangle <br>
 [6] http://docs.python-requests.org/en/master/
