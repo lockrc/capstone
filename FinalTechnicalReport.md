@@ -113,7 +113,7 @@ The broyhill windturbine is also on the obvius data server and has csv files tha
 There are 4 solar thermal systems on Appalachian's Campus. These systems all have the same csv layout so they all use the same format to be inserted into the database. The solar thermal is not completely correct because the method that I chose to calculate the production is not the perfered method but I did not find that out until the end. It is very close but not exactly the same.
 
 ### Moving to server
-Everything has been moved over to the server and is now located at asurei-data.appstate.edu.
+Everything has been moved over to the server and is now located at http://asurei-data.appstate.edu.
 
 ### Processing Mamac
 The mamac system gives the production in minute increments and is aggrigated to be on a 15 minute scale. This system is for the mountain array near raley traffic circle. The data is aggrigated and processed in mamac.py.
