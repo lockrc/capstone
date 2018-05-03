@@ -21,7 +21,7 @@ Python, Renewable Energy, Solar Thermal, grafana, Photovoltaic, csv, JSON, XML
 * [References](#references)
 
 ## Introduction and Project Overview 
-(800-1200 words)
+(800-1200 words) 
 
 This section should be written assuming your reader has zero knowledge of your work and its background. You must bring the reader from "zero" to a level where they can understand the main ideas and results of your work. (This should be derived primarily from your Final Project Description document)
 
@@ -34,7 +34,7 @@ Summary of features
 
 This project was created to move the data from the Renewable Energy Initiative at Appalachian State University to a new dashboard. The Renewable Energy Initiative (REI) currently pays approximately $14,000 per year to a company to host a dashboard that graphs all of their renewable energy project data. They are not happy with their current solution because their current solution does not allow them any ability to modify the dashboards in any way. Any changes that they want made to the dashboards they need to call and have the company make the changes and this can take up to a week. This solution does not meet their needs very well and costs them more than 10% of their annual operating budget to continue using the dashboard. This solution is not optimal and so is being replaced by the dashboard hosted on campus and using the grafana graphing software.
 
-At this time REI has 7 projects with ongoing data requirements. There are also many projects that are in the process of being created. This solution allows them to more easily add new systems and add them to their own dashboard rather than having to work through a company. This also allows them to direcly look at their data with transparency and understand how the data is being processed. With their current solution their is processing in the background and that does not allow for them to understand if their data is even completely correct because they do not know how the company is processing their data before it shows up on the dashboard.
+At this time REI has 7 projects with ongoing data requirements. There are also many projects that are in the process of being created. This solution allows them to more easily add new systems and add them to their own dashboard rather than having to work through a company. This also allows them to direcly look at their data with transparency and understand how the data is being processed. With their current solution there is processing in the background and that does not allow for them to understand if their data is even completely correct because they do not know how the company is processing their data before it shows up on the dashboard.
 
 This solution allows for REI to easily add new systems and to have authority over how their data is processed. This also allows them complete autonomy in the ability to edit and update their dashboards as they please. They also wished for more granularity in their data because their current solution only allows for 1 hour increments and does not automatically update all of the graphs.
 
@@ -44,7 +44,6 @@ My solution immediately handles the problems that REI has with their current sol
 
 ## Design Development and Test 
 (800-1200 words)
-This section describes your design and test approach. Subsections should include:
 
 ### Design 
 * Libraries and Python version
@@ -91,6 +90,7 @@ Testing was done manually for my project. Each new system that got added had to 
 |Live Data|Incomplete|
 |Backfill Data|Incomplete|
 |Other Graphing Solutions|Incomplete|
+|Download|Incomplete|
 
 Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
 This section describes final system in terms of features completed and actual performance of the system under test.
@@ -130,6 +130,9 @@ The data only goes back as far as the csv's were available and the full backdata
 ### Other Graphing Solution
 This goal was created because I expected that I would complete my project well before the end of the semester and would need to add more to the project. The idea was that I would use other services like plot.ly to create multiple versions of the dashboards to give multiple options.
 
+### Download
+The ability to download selected data is somthing that was requested late in the development process and was the least likely feature to be completed because of the late addition and the other features left to be completed.
+
 ## Conclusions and Future Work
 (400-800 words)
 
@@ -138,7 +141,11 @@ Describe your conclusions and "lessons learned" regarding the results
 Describe utility of results
 Suggest areas for further study and/or development
 
-This project is mostly complete there are still a few pieces left to complete. There is a request for live data as well as the ability to have people select any data that they want from each system.
+### Conclusions
+The project is mostly done. The project will need more work to more substantially meet the needs that REI has. However, this project is a strong start and can easily be continued for a complete solution. The basic setup allows for expansion by a future developer and allows for easy updates should they need to add systems.
+
+### Future work
+The crashing issue will need to be solved. It is likely an error with reaching either of the websites or the database. The furture work will also need to include the backfill of data and implementing live data and the ability to download the data.
 
 ## References
 Provide references in standard ACM format (numbers in text correspond to numbered references here).
