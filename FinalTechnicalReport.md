@@ -54,13 +54,17 @@ This section describes your design and test approach. Subsections should include
    * pytz [4]
    * untangle [5]
    * requests [6]
-   
-Describe system components (e.g. software modules/components, libraries, etc.), interfaces, and operations. Use figures to illustrate your description, for example: photos, block diagrams, class diagrams, state diagrams, flow charts, tables, etc.
+
+This project is seperated into 3 files: sftppull.py, processfiles.py, mamac.py.
+  
+sftppull.py - This is the main script that handles pulling the csv files and processing them all and inserting them into the database.
+  
+processfiles.py - This file simply contains the methods to process all of the csv files and to process the enphase system.
+  
+mamac.py - This file processes the mamac system's XML and aggrigates the data over each 15 minute period.
 
 ### Development
 Before each step in the process I created little test files to learn how each library worked and make sure that I could get it working in isolation before adapting it to my project.
-
-Describe how system was developed (for example, order of subsystem development and how risks were addressed early)
 
 Development started with everything being located on my machine. I began by getting the grafana server and MYSQL server running on my machine. After that I moved on to get static files from the current dashboard and wrote a file to upload them. That file is importScript.py. After that, I moved on to pulling files from a file server located on campus and pulled all of the csv files. I began by processing these files for just one system Library Circle. Once I had that working I moved on to the other systems first the Broyhill windturbine. After I got the windturbine operating correctly, I moved to process the Solar Thermal systems. I started with Summit and once it was functional I used that code to process all of the Solar Thermal Systems.
 
@@ -69,21 +73,62 @@ I next moved to process the legends photovoltaic system. This system is managed 
 The mountain array at raley traffic circle is the system with the most complications. It is a site hosted on Appalachian State's network that is a live representation of the data. It has 4 catagories for which it holds the data: minute, hour, day, month. The problem comes that we want data for 15 minute intervals. This means the minutes have to be added up and posted. This process took longer than expected to get correct. It eventually ended up being a sepereate file that wakes up every minute to accumulate the data and post it when it is a 15 minute interval.
 
 ### Test
-Describe your test approach (what was tested, how tested, what was not tested). You should organize this by feature (as you did for the System Features assignment).
-
-As a guide to the level of detail, someone with your level of experience should be able to substantially reproduce your work from the descriptions in this section along with Introduction section.
 
 Testing was done manually for my project. Each new system that got added had to be compared to the existing dashboard as well as the csv files to make sure that they matched. The comparison to the old dashboard was not an exact comparison because the timeframes were different (1 hour increments for old dashboard, 15 minute for new). The csv files matched exactly what was in the database.
 
 ## Results
 (800-1200 words)
 
+|Feature|Status|
+|------|------|
+|Pulling csv files|Success|
+|Processing Library Circle|Success|
+|Processing Wind|Success|
+|Processing Solar Thermal|Mostly Successful|
+|Moving Everything to Server|Success|
+|Processing Mamac|Success|
+|Processing Enphase|Incomplete|
+|Live Data|Incomplete|
+|Backfill Data|Incomplete|
+|Other Graphing Solutions|Incomplete|
+
 Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
 This section describes final system in terms of features completed and actual performance of the system under test.
 Include discussion of problems encountered, accuracy of estimates
 Use figures and diagrams whenever possible
 
-The objectives were very close to being met. The only thing that was not completed was the ability to pull live data.
+### Overall
+The overall objectives were very close to being met. There were multiple "strech" goals that were not achieved. The stability needs to be worked on because it only seems to run for about a week at a time before it crashes. I have been unable to narrow down the root cause despite outputting to a file.
+
+### Pulling csv files from file server
+Suceessful at pulling the csv files from the file server.
+
+### Processing Library Circle
+Library Circle is the only photovoltaic system that is on the obvius data server. The csv files get processed correctly in processfiles.py and 
+
+### Processing Wind
+The broyhill windturbine is also on the obvius data server and has csv files that hold the many data points kept on the wind turbine.
+
+### Process Solar Thermal
+There are 4 solar thermal systems on Appalachian's Campus. These systems all have the same csv layout so they all use the same format to be inserted into the database. The solar thermal is not completely correct because the method that I chose to calculate the production is not the perfered method but I did not find that out until the end. It is very close but not exactly the same.
+
+### Moving to server
+Everything has been moved over to the server and is now located at asurei-data.appstate.edu.
+
+### Processing Mamac
+The mamac system gives the production in minute increments and is aggrigated to be on a 15 minute scale. This system is for the mountain array near raley traffic circle. The data is aggrigated and processed in mamac.py.
+
+### Processing Enphase
+The enphase system is the system that monitors legends photovoltaic system. This system provides a JSON output that gives the production information for the last hour. It is processed by processfiles.py. The data put into the database for this is not correct I have not finished setting up the processing for this data.
+
+### Live Data
+The live data did not make it into the final product. I ran out of time to complete this feature. It was really more of a strech goal than a goal I expected to be able to reach.
+
+### Backfill Data
+The data only goes back as far as the csv's were available and the full backdata was never added to the database. The legends and mountain array don't have back data to add.
+
+### Other Graphing Solution
+This goal was created because I expected that I would complete my project well before the end of the semester and would need to add more to the project. The idea was that I would use other services like plot.ly to create multiple versions of the dashboards to give multiple options.
 
 ## Conclusions and Future Work
 (400-800 words)
@@ -105,3 +150,5 @@ List all references to code used as part of your system (libraries, etc.)
 [4] http://pytz.sourceforge.net/ <br>
 [5] https://github.com/stchris/untangle <br>
 [6] http://docs.python-requests.org/en/master/
+[7] http://asurei-data.appstate.edu
+[8] https://buildingos.com/s/appstate/storyboard
