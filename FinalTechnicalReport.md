@@ -78,6 +78,11 @@ Testing was done manually for my project. Each new system that got added had to 
 ## Results
 (800-1200 words)
 
+Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
+This section describes final system in terms of features completed and actual performance of the system under test.
+Include discussion of problems encountered, accuracy of estimates
+Use figures and diagrams whenever possible
+
 |Feature|Status|
 |------|------|
 |Pulling csv files|Success|
@@ -91,11 +96,6 @@ Testing was done manually for my project. Each new system that got added had to 
 |Backfill Data|Incomplete|
 |Other Graphing Solutions|Incomplete|
 |Download|Incomplete|
-
-Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
-This section describes final system in terms of features completed and actual performance of the system under test.
-Include discussion of problems encountered, accuracy of estimates
-Use figures and diagrams whenever possible
 
 ### Overall
 The overall objectives were very close to being met. There were multiple "strech" goals that were not achieved. The stability needs to be worked on because it only seems to run for about a week at a time before it crashes. I have been unable to narrow down the root cause despite outputting to a file.
