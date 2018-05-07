@@ -41,11 +41,14 @@ My solution immediately handles the problems that REI has with their current sol
 
 This project is separated into 3 files: sftppull.py, processfiles.py, mamac.py.
   
-sftppull.py - This is the main script that handles pulling the csv files and processing them all and inserting them into the database. This file requires pysftp to pull all the files from the file server.
+#### sftppull.py
+This is the main script that handles pulling the csv files and processing them all and inserting them into the database. This file requires pysftp to pull all the files from the file server.
   
-processfiles.py - This file simply contains the methods to process all of the csv files and to process the enphase system. This file requires mysql.connector to connect to the MYSQL server. This also requires pytz to convert timezones, requests to load the webpage for the enphase system, and JSON to process the webpage.
+#### processfiles.py
+This file simply contains the methods to process all of the csv files and to process the enphase system. This file requires mysql.connector to connect to the MYSQL server. This also requires pytz to convert timezones, requests to load the webpage for the enphase system, and JSON to process the webpage.
   
-mamac.py - This file processes the Mamac system's XML and aggregates the data over each 15 minute period. This file requires pytz to convert time, requests to load the webpage, and untangle to process the XML.
+#### mamac.py
+This file processes the Mamac system's XML and aggregates the data over each 15 minute period. This file requires pytz to convert time, requests to load the webpage, and untangle to process the XML.
 
 ### Development
 Before each step in the process I created little test files to learn how each library worked and make sure that I could get it working in isolation before adapting it to my project.
