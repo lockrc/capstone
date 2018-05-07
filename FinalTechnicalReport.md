@@ -3,8 +3,6 @@
 #### REI Dashboard Project by: RJ Lock
 #### May 6, 2018
 ## Abstract
-Brief 200-300 word description of project objectives, methods and results.
-
 This project is designed to replace Appalachian State University's Renewable Energy Initiative (REI) dashboard that they use to display the generation by the renewables on campus. They currently pay $14,000 per year to a company and are still unhappy with the service they receive. They pay more than 10% of their budget on this dashboard and they are dissatisfied with the product. I created a new version with python scripts, a MYSQL database, and a Grafana server. My solution gives much of the functionality that they want from their dashboard. It gives more features that they wanted from their current dashboard and allows them to host it on Appalachian's campus for much cheaper than $14,000 per year.
 
 ## Keywords
@@ -21,18 +19,7 @@ Python, Renewable Energy, Solar Thermal, Grafana, Photovoltaic, csv, JSON, XML
 * [References](#references)
 
 ## Introduction and Project Overview 
-(800-1200 words) 
-
-This section should be written assuming your reader has zero knowledge of your work and its background. You must bring the reader from "zero" to a level where they can understand the main ideas and results of your work. (This should be derived primarily from your Final Project Description document)
-
-Introduces the problem, objectives, and the users (or customers) of project results, context of problem and issues that affect solution choices
-Describes relevant background information. May include any alternative solutions (are there existing solutions or similar systems? give references) in terms of strengths and weaknesses.
-Describe value or benefits of your solution and results
-Problem scope--problems addressed and not addressed
-Figures and system diagrams where possible to illustrate problems and solutions.
-Summary of features
-
-This project was created to move the data from the Renewable Energy Initiative at Appalachian State University to a new dashboard. The Renewable Energy Initiative (REI) currently pays approximately $14,000 per year to a company to host a dashboard that graphs all of their renewable energy project data. They are not happy with their current solution because their current solution does not allow them any ability to modify the dashboards in any way. Any changes that they want made to the dashboards they need to call and have the company make the changes and this can take up to a week. This solution does not meet their needs very well and costs them more than 10% of their annual operating budget to continue using the dashboard. This solution is not optimal and so is being replaced by the dashboard hosted on campus and using the Grafana graphing software.
+This project was created to move the data from the Renewable Energy Initiative at Appalachian State University to a new dashboard. The Renewable Energy Initiative (REI) currently pays approximately $14,000 per year to a company to host a dashboard that graphs all of their renewable energy project data [8]. They are not happy with their current solution because their current solution does not allow them any ability to modify the dashboards in any way. Any changes that they want made to the dashboards they need to call and have the company make the changes and this can take up to a week. This solution does not meet their needs very well and costs them more than 10% of their annual operating budget to continue using the dashboard. This solution is not optimal and so is being replaced by the dashboard hosted on campus and using the Grafana graphing software.
 
 At this time REI has 7 projects with ongoing data requirements. There are also many projects that are in the process of being created. This solution allows them to more easily add new systems and add them to their own dashboard rather than having to work through a company. This also allows them to directly look at their data with transparency and understand how the data is being processed. With their current solution there is processing in the background and that does not allow for them to understand if their data is even completely correct because they do not know how the company is processing their data before it shows up on the dashboard.
 
@@ -43,8 +30,6 @@ There are many graphing solutions out there but Grafana provides a perfect one b
 My solution immediately handles the problems that REI has with their current solution. It also provides an immediate benefit of cost savings.
 
 ## Design Development and Test 
-(800-1200 words)
-
 ### Design 
 * Libraries and Python version
    * Python 3.6 [1]
@@ -56,11 +41,11 @@ My solution immediately handles the problems that REI has with their current sol
 
 This project is separated into 3 files: sftppull.py, processfiles.py, mamac.py.
   
-sftppull.py - This is the main script that handles pulling the csv files and processing them all and inserting them into the database.
+sftppull.py - This is the main script that handles pulling the csv files and processing them all and inserting them into the database. This file requires pysftp to pull all the files from the file server.
   
-processfiles.py - This file simply contains the methods to process all of the csv files and to process the enphase system.
+processfiles.py - This file simply contains the methods to process all of the csv files and to process the enphase system. This file requires mysql.connector to connect to the MYSQL server. This also requires pytz to convert timezones, requests to load the webpage for the enphase system, and JSON to process the webpage.
   
-mamac.py - This file processes the Mamac system's XML and aggregates the data over each 15 minute period.
+mamac.py - This file processes the Mamac system's XML and aggregates the data over each 15 minute period. This file requires pytz to convert time, requests to load the webpage, and untangle to process the XML.
 
 ### Development
 Before each step in the process I created little test files to learn how each library worked and make sure that I could get it working in isolation before adapting it to my project.
@@ -72,17 +57,9 @@ I next moved to process the legends photovoltaic system. This system is managed 
 The Mountain Array at Raley Traffic Circle is the system with the most complications. It is a site hosted on Appalachian State's network that is a live representation of the data. It has 4 catagories for which it holds the data: minute, hour, day, month. The problem comes that we want data for 15-minute intervals. This means the minutes have to be added up and posted. This process took longer than expected to get correct. It eventually ended up being a sepereate file that wakes up every minute to accumulate the data and post it when it is a 15-minute interval.
 
 ### Test
-
 Testing was done manually for my project. Each new system that got added had to be compared to the existing dashboard as well as the csv files to make sure that they matched. The comparison to the old dashboard was not an exact comparison because the timeframes were different (1-hour increments for old dashboard, 15 minute for new). The csv files matched exactly what was in the database.
 
 ## Results
-(800-1200 words)
-
-Actual results of project. Describe how well you met your objectives, feature by feature. A table of results will help to summarize this.
-This section describes final system in terms of features completed and actual performance of the system under test.
-Include discussion of problems encountered, accuracy of estimates
-Use figures and diagrams whenever possible
-
 |Feature|Status|
 |------|------|
 |Pulling csv files|Success|
@@ -134,13 +111,6 @@ This goal was created because I expected that I would complete my project well b
 The ability to download selected data is something that was requested late in the development process and was the least likely feature to be completed because of the late addition and the other features left to be completed.
 
 ## Conclusions and Future Work
-(400-800 words)
-
-Briefly summarize problem, approach and results
-Describe your conclusions and "lessons learned" regarding the results
-Describe utility of results
-Suggest areas for further study and/or development
-
 ### Conclusions
 The project is mostly done. The project will need more work to more substantially meet the needs that REI has. However, this project is a strong start and can easily be continued for a complete solution. The basic setup allows for expansion by a future developer and allows for easy updates should they need to add systems.
 
@@ -148,9 +118,6 @@ The project is mostly done. The project will need more work to more substantiall
 The crashing issue will need to be solved. It is likely an error with reaching either of the websites or the database. The future work will also need to include the backfill of data and implementing live data and the ability to download the data.
 
 ## References
-Provide references in standard ACM format (numbers in text correspond to numbered references here).
-List all references to code used as part of your system (libraries, etc.)
-
 [1] https://www.python.org/ <br>
 [2] https://pysftp.readthedocs.io/en/release_0.2.9/ <br>
 [3] https://dev.mysql.com/downloads/connector/python/ <br>
