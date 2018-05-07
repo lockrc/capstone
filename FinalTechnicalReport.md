@@ -115,7 +115,7 @@ The ability to download selected data is something that was requested late in th
 The project is mostly done. The project will need more work to more substantially meet the needs that REI has. However, this project is a strong start and can easily be continued for a complete solution. The basic setup allows for expansion by a future developer and allows for easy updates should they need to add systems.
 
 ### Future work
-The crashing issue will need to be solved. It is likely an error with reaching either of the websites or the database. The future work will also need to include the backfill of data and implementing live data and the ability to download the data.
+The crashing issue will need to be solved. It is likely an error with reaching either of the websites or the database. This should be easily tracked down by looking at the stdout and stderr being pushed to files. The future work will also need to include the backfill of data and implementing live data and the ability to download the data.
 
 ## References
 [1] https://www.python.org/ <br>
