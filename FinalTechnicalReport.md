@@ -40,6 +40,9 @@ My solution immediately handles the problems that REI has with their current sol
    * requests [6]
 
 This project is separated into 3 files: sftppull.py, processfiles.py, mamac.py.
+
+![Figure 1](https://github.com/lockrc/capstone/blob/master/Untitled%20Diagram.png) <br>
+Figure 1
   
 #### sftppull.py
 This is the main script that handles pulling the csv files and processing them all and inserting them into the database. This file requires pysftp to pull all the files from the file server.
